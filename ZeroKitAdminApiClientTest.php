@@ -1,14 +1,14 @@
 <?php
 namespace ZeroKit;
 
-include "ZeroKitAdminApiClient.php";
+require_once 'ZeroKitAdminApiClient.php';
 
 use PHPUnit\Framework\TestCase;
 
 class Test extends TestCase
 {
-    private $serviceUrl;
-    private $adminKey;
+    protected $serviceUrl;
+    protected $adminKey;
 
     public function __construct($name = null, array $data = [], $dataName = '')
     {
@@ -36,15 +36,25 @@ class Test extends TestCase
     }
 
     public function testCanNotBeCreatedWithoutParams(){
-        $this->expectException("ArgumentCountError");
+        // For PHP 7.1+ an exception is raised by the framework
+        if (version_compare(phpversion(), '7.1.0', '>='))
+            $this->expectException("ArgumentCountError");
+        // For earlier PHP versions a warning raised or an explicit InvalidArgumentException is thrown.
+        else
+            $this->expectException("InvalidArgumentException");
 
-        new ZeroKitAdminApiClient();
+        @new ZeroKitAdminApiClient();
     }
 
-    public function testCanNotBeCreatedWithoutAdminkey(){
-        $this->expectException("ArgumentCountError");
+    public function testCanNotBeCreatedWithoutAdminKey(){
+        // For PHP 7.1+ an exception is raised by the framework
+        if (version_compare(phpversion(), '7.1.0', '>='))
+            $this->expectException("ArgumentCountError");
+        // For earlier PHP versions a warning raised or an explicit InvalidArgumentException is thrown.
+        else
+            $this->expectException("InvalidArgumentException");
 
-        new ZeroKitAdminApiClient($this->serviceUrl);
+        @new ZeroKitAdminApiClient($this->serviceUrl);
     }
 
     public function testCanNotBeCreatedWithNullUrl()

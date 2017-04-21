@@ -1,7 +1,7 @@
 <?php
 namespace ZeroKit;
 
-include "ZeroKitAdminApiException.php";
+require_once "ZeroKitAdminApiException.php";
 
 /**
  * ZeroKit administrative API client for PHP 5.x - 7.x
