@@ -1,0 +1,15 @@
+{
+  "name": "tresorit/zerokit-admin-client",
+  "description": "Client lib for ZeroKit administrative API",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Gergely Hamos",
+      "email": "hami89@gmail.com"
+    }
+  ],
+  "require": {
+    "phpunit/phpunit": "^6.1"
+  }
+}
